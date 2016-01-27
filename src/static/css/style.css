@@ -1,1 +1,14 @@
 body { padding-top: 70px; }
+
+.form-size {
+    max-width: 640px;
+    margin: 0 auto;
+
+    background-color: #E9E9E9;
+    padding: 20px;
+
+    border: 1px solid #D5D5D5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
