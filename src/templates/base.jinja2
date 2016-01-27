@@ -23,11 +23,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user %}
-                    <li><a href="/view-profile" title="Your Alerts">Your Alerts</a></li>
-                    <li><a href="/logout" title="Log Out">Log out</a></li>
+                    <li><a href="/view-profile" title="Your Alerts"><span class="glyphicon glyphicon-user"></span> Your Alerts</a></li>
+                    <li><a href="/logout" title="Log Out"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                 {% else %}
-                    <li><a href="/register" title="Sign up">Sign up</a></li>
-                    <li><a href="/login" title="Log in">Log in</a></li>
+                    <li><a href="/register" title="Sign up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <li><a href="/login" title="Log in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                 {% endif %}
             </ul>
             ​
