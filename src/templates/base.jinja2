@@ -25,16 +25,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/" title="Stores">Stores</a></li>
-                <li><a href="/news" title="Alerts">Alerts</a></li>
+                <li><a href="{{ url_for('stores.index') }}" title="Stores">Stores</a></li>
+                <li><a href="{{ url_for('alerts.index') }}" title="Alerts">Alerts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user %}
-                    <li><a href="/view-profile" title="Your Alerts"><span class="glyphicon glyphicon-user"></span> Your Alerts</a></li>
-                    <li><a href="/logout" title="Log Out"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                    <li><a href="{{ url_for('users.user_alerts') }}" title="Your Alerts"><span class="glyphicon glyphicon-user"></span> Your Alerts</a></li>
+                    <li><a href="{{ url_for('users.logout_user') }}" title="Log Out"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                 {% else %}
-                    <li><a href="/register" title="Sign up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-                    <li><a href="/login" title="Log in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
+                    <li><a href="{{ url_for('users.register_user') }}" title="Sign up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <li><a href="{{ url_for('users.login_user') }}" title="Log in"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
                 {% endif %}
             </ul>
             ​
