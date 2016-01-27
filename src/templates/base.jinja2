@@ -11,6 +11,30 @@
 </head>
 <body>
 
+<nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" title="Home">Pricing</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/" title="Stores">Stores</a></li>
+                <li><a href="/news" title="Alerts">Alerts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                    <li><a href="/view-profile" title="Your Alerts">Your Alerts</a></li>
+                    <li><a href="/logout" title="Log Out">Log out</a></li>
+                {% else %}
+                    <li><a href="/register" title="Sign up">Sign up</a></li>
+                    <li><a href="/login" title="Log in">Log in</a></li>
+                {% endif %}
+            </ul>
+            ​
+        </div>
+    </div>
+</nav>
+
 <div class="content container">
     {% block content %}
 
