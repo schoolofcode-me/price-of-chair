@@ -1,4 +1,9 @@
 {% extends "base.jinja2" %}
 {% block content %}
-    <p>Hello, world!</p>
+    <div class="jumbotron">
+        <h1>Pricing Service</h1>
+        <p>We scan online store websites to alert you of price drops in items that interest you.</p>
+        <p>Just sign up, and get started by adding the URL of an item that you wish to track. We'll do the rest!</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('users.register_user') }}" role="button">Get started</a></p>
+    </div>
 {% endblock %}
