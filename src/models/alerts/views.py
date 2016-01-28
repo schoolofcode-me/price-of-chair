@@ -9,11 +9,6 @@ __author__ = 'jslvtr'
 alert_blueprint = Blueprint('alerts', __name__)
 
 
-@alert_blueprint.route('/')
-def index():
-    return 'This is the Alerts Index'
-
-
 @alert_blueprint.route('/new', methods=['GET', 'POST'])
 @user_decorators.requires_login
 def create_alert():

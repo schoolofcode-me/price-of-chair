@@ -6,10 +6,14 @@
         </h1>
     </div>
     <p>All URLs in this store should start with <strong>{{ store.url_prefix }}</strong></p>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <a class="btn btn-warning" href="{{ url_for('stores.edit_store', store_id=store._id) }}" role="button">Edit Store</a>
-            <a class="btn btn-danger" href="{{ url_for('stores.delete_store', store_id=store._id) }}" role="button">Permanently Delete Store</a>
+    {% if session['email'] in config.ADMINS %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a class="btn btn-warning" href="{{ url_for('stores.edit_store', store_id=store._id) }}" role="button">Edit
+                    Store</a>
+                <a class="btn btn-danger" href="{{ url_for('stores.delete_store', store_id=store._id) }}" role="button">Permanently
+                    Delete Store</a>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}

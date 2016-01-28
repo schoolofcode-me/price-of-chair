@@ -7,12 +7,15 @@
     </div>
     <div class="list-group">
         {% for store in stores %}
-             <a href="{{ url_for('stores.store_page', store_id=store._id) }}" class="list-group-item">
+            <a href="{{ url_for('stores.store_page', store_id=store._id) }}" class="list-group-item">
                 <h4 class="list-group-item-heading">{{ store.name }}</h4>
-                <p class="list-group-item-text">All URLs in this store should start with <strong>{{ store.url_prefix }}</strong></p>
+                <p class="list-group-item-text">All URLs in this store should start with
+                    <strong>{{ store.url_prefix }}</strong></p>
             </a>
         {% endfor %}
     </div>
-    <a class="btn btn-success" href="{{ url_for('stores.create_store') }}"><span
-            class="glyphicon glyphicon-plus"></span> Create new</a>
+    {% if session['email'] in config.ADMINS %}
+        <a class="btn btn-success" href="{{ url_for('stores.create_store') }}"><span
+                class="glyphicon glyphicon-plus"></span> Create new</a>
+    {% endif %}
 {% endblock %}
