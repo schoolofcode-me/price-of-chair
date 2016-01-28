@@ -27,6 +27,10 @@ class Store(object):
         }
 
     @classmethod
+    def all(cls):
+        return [cls(**elem) for elem in Database.find(StoreConstants.COLLECTION, {})]
+
+    @classmethod
     def get_by_id(cls, id):
         return cls(**Database.find_one(StoreConstants.COLLECTION, {"_id": id}))
 

@@ -7,15 +7,10 @@
     </div>
     <div class="list-group">
         {% for store in stores %}
-            <!-- Display list of stores here as
-             <a href="#"
-               class="list-group-item">
-                <h4 class="list-group-item-heading">
-                    store_name
-                </h4>
-                <p class="list-group-item-text">Some store information or URL</p>
+             <a href="#" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ store.name }}</h4>
+                <p class="list-group-item-text">All URLs in this store should start with <strong>{{ store.url_prefix }}</strong></p>
             </a>
-             -->
         {% endfor %}
     </div>
     <a class="btn btn-success" href="{{ url_for('stores.create_store') }}"><span
