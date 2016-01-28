@@ -39,6 +39,13 @@ def deactivate_alert(alert_id):
     return redirect(url_for('users.user_alerts'))
 
 
+@alert_blueprint.route('/activate/<string:alert_id>')
+@user_decorators.requires_login
+def activate_alert(alert_id):
+    Alert.find_by_id(alert_id).activate()
+    return redirect(url_for('users.user_alerts'))
+
+
 @alert_blueprint.route('/<string:alert_id>')
 @user_decorators.requires_login
 def get_alert_page(alert_id):

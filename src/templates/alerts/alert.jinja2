@@ -10,7 +10,11 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <a class="btn btn-default" href="{{ alert.item.url }}" role="button">Visit Site</a>
-            <a class="btn btn-danger" href="{{ url_for('alerts.deactivate_alert', alert_id=alert._id) }}" role="button">Deactivate Alert</a>
+            {% if alert.active %}
+                <a class="btn btn-danger" href="{{ url_for('alerts.deactivate_alert', alert_id=alert._id) }}" role="button">Deactivate Alert</a>
+            {% else %}
+                <a class="btn btn-success" href="{{ url_for('alerts.activate_alert', alert_id=alert._id) }}" role="button">Activate Alert</a>
+            {% endif %}
             <a class="btn btn-warning" href="{{ url_for('alerts.check_alert_price', alert_id=alert._id) }}" role="button">Check Price Now</a>
         </div>
     </div>

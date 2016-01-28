@@ -75,3 +75,7 @@ class Alert(object):
     def deactivate(self):
         self.active = False
         self.save_to_mongo()
+
+    def activate(self):
+        self.active = True
+        self.save_to_mongo()
