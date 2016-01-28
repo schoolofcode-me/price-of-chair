@@ -2,6 +2,8 @@ import uuid
 from src.common.database import Database
 from src.common.utils import Utils
 import src.models.users.errors as UserErrors
+import src.models.users.constants as UserConstants
+from src.models.alerts.alert import Alert
 
 __author__ = 'jslvtr'
 
@@ -14,6 +16,10 @@ class User(object):
 
     def __repr__(self):
         return "<User {}>".format(self.email)
+
+    @classmethod
+    def find_by_email(cls, email):
+        return cls(**Database.find_one(UserConstants.COLLECTION, {'email': email}))
 
     @staticmethod
     def is_login_valid(email, password):
@@ -63,3 +69,6 @@ class User(object):
             "email": self.email,
             "password": self.password
         }
+
+    def get_alerts(self):
+        return Alert.find_by_email(self.email)
