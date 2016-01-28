@@ -10,6 +10,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <a class="btn btn-default" href="{{ alert.item.url }}" role="button">Visit Site</a>
+            <a class="btn btn-default" href="{{ url_for('alerts.edit_alert', alert_id=alert._id) }}" role="button">Edit Alert</a>
             {% if alert.active %}
                 <a class="btn btn-danger" href="{{ url_for('alerts.deactivate_alert', alert_id=alert._id) }}" role="button">Deactivate Alert</a>
             {% else %}

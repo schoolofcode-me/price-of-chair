@@ -32,6 +32,20 @@ def create_alert():
     return render_template("alerts/new_alert.jinja2")  # Send the user an error if their login was invalid
 
 
+@alert_blueprint.route('/edit/<string:alert_id>', methods=['GET', 'POST'])
+@user_decorators.requires_login
+def edit_alert(alert_id):
+    if request.method == 'POST':
+        price_limit = float(request.form['price_limit'])
+
+        alert = Alert.find_by_id(alert_id)
+        alert.price_limit = price_limit
+        alert.load_item_price()  # This already saves to MongoDB
+
+    # What happens if it's a GET request
+    return render_template("alerts/edit_alert.jinja2", alert=Alert.find_by_id(alert_id))  # Send the user an error if their login was invalid
+
+
 @alert_blueprint.route('/deactivate/<string:alert_id>')
 @user_decorators.requires_login
 def deactivate_alert(alert_id):
