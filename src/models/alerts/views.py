@@ -20,7 +20,7 @@ def create_alert():
     if request.method == 'POST':
         name = request.form['name']
         url = request.form['url']
-        price_limit = request.form['price_limit']
+        price_limit = float(request.form['price_limit'])
 
         item = Item(name, url)
         item.save_to_mongo()
