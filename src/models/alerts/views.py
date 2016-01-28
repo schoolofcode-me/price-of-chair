@@ -1,4 +1,7 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, session
+
+from src.models.alerts.alert import Alert
+from src.models.items.item import Item
 
 __author__ = 'jslvtr'
 
@@ -13,9 +16,15 @@ def index():
 @alert_blueprint.route('/new', methods=['GET', 'POST'])
 def create_alert():
     if request.method == 'POST':
-        # Deal with what happens when the user has submitted the form
-        # to create an alert
-        pass
+        name = request.form['name']
+        url = request.form['url']
+        price_limit = request.form['price_limit']
+
+        item = Item(name, url)
+        item.save_to_mongo()
+
+        alert = Alert(session['email'], price_limit, item._id)
+        alert.load_item_price()  # This already saves to MongoDB
 
     # What happens if it's a GET request
     return render_template("alerts/new_alert.jinja2")  # Send the user an error if their login was invalid
