@@ -7,8 +7,12 @@
     </div>
     <div class="list-group">
         {% for alert in alerts %}
-            <a href="/alerts/{{ alert._id }}" class="list-group-item">
-                <h4 class="list-group-item-heading">Alert for {{ alert.item.name }}</h4>
+            <a href="/alerts/{{ alert._id }}"
+               class="list-group-item {{ 'list-group-item-warning' if not alert.active else '' }}">
+                <h4 class="list-group-item-heading">
+                    {{ "<span class='glyphicon glyphicon-remove-circle'></span> " if not alert.active else '' }}
+                    Alert for {{ alert.item.name }}
+                </h4>
                 <p class="list-group-item-text">Last price found <strong>£{{ alert.item.price }}</strong><br/>Last
                     checked on <strong>{{ alert.last_checked.strftime("%d-%m-%Y %H:%M") }}</strong></p>
             </a>
