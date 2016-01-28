@@ -1,6 +1,6 @@
 import json
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 
 from src.models.stores.store import Store
 
@@ -33,15 +33,29 @@ def create_store():
 @store_blueprint.route('/edit/<string:store_id>', methods=['GET', 'POST'])
 def edit_store(store_id):
     if request.method == 'POST':
-        pass
+        name = request.form['name']
+        url_prefix = request.form['url_prefix']
+        tag_name = request.form['tag_name']
+        query = json.loads(request.form['query'])
+
+        store = Store.get_by_id(store_id)
+
+        store.name = name
+        store.url_prefix = url_prefix
+        store.tag_name = tag_name
+        store.query = query
+
+        store.save_to_mongo()
+
+        return redirect(url_for('.index'))
 
     # What happens if it's a GET request
-    return render_template("stores/edit_store.jinja2")
+    return render_template("stores/edit_store.jinja2", store=Store.get_by_id(store_id))
 
 
 @store_blueprint.route('/delete/<string:store_id>')
 def delete_store(store_id):
-    pass
+    Store.get_by_id(store_id).delete()
 
 
 @store_blueprint.route('/<string:store_id>')
