@@ -1,4 +1,8 @@
-from flask import Blueprint, render_template
+import json
+
+from flask import Blueprint, render_template, request
+
+from src.models.stores.store import Store
 
 __author__ = 'jslvtr'
 
@@ -13,7 +17,17 @@ def index():
 
 @store_blueprint.route('/new', methods=['GET', 'POST'])
 def create_store():
-    return "This is the create store page."
+    # name, url_prefix, tag_name, query
+    if request.method == 'POST':
+        name = request.form['name']
+        url_prefix = request.form['url_prefix']
+        tag_name = request.form['tag_name']
+        query = json.loads(request.form['query'])
+
+        Store(name, url_prefix, tag_name, query).save_to_mongo()
+
+    # What happens if it's a GET request
+    return render_template("stores/new_store.jinja2")
 
 
 @store_blueprint.route('/<string:name>')
