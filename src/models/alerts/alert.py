@@ -63,5 +63,9 @@ class Alert(object):
             self.send()
 
     @classmethod
-    def find_by_email(cls, user_email):
+    def find_by_user_email(cls, user_email):
         return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION, {'user_email': user_email})]
+
+    @classmethod
+    def find_by_id(cls, alert_id):
+        return cls(**Database.find_one(AlertConstants.COLLECTION, {'_id': alert_id}))

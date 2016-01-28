@@ -41,4 +41,5 @@ def deactivate_alert(alert_id):
 @alert_blueprint.route('/<string:alert_id>')
 @user_decorators.requires_login
 def get_alert_page(alert_id):
-    return alert_id
+    return render_template('alerts/alert.jinja2', alert=Alert.find_by_id(alert_id))
+

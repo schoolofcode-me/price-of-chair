@@ -71,4 +71,4 @@ class User(object):
         }
 
     def get_alerts(self):
-        return Alert.find_by_email(self.email)
+        return Alert.find_by_user_email(self.email)
