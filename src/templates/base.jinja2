@@ -29,7 +29,7 @@
                 <li><a href="{{ url_for('alerts.index') }}" title="Alerts">Alerts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if user %}
+                {% if session['email'] %}
                     <li><a href="{{ url_for('users.user_alerts') }}" title="Your Alerts"><span class="glyphicon glyphicon-user"></span> Your Alerts</a></li>
                     <li><a href="{{ url_for('users.logout_user') }}" title="Log Out"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                 {% else %}
