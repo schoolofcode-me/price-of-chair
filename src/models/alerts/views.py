@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template, session
 
 from src.models.alerts.alert import Alert
 from src.models.items.item import Item
+import src.models.users.decorators as user_decorators
 
 __author__ = 'jslvtr'
 
@@ -14,6 +15,7 @@ def index():
 
 
 @alert_blueprint.route('/new', methods=['GET', 'POST'])
+@user_decorators.requires_login
 def create_alert():
     if request.method == 'POST':
         name = request.form['name']
@@ -31,10 +33,12 @@ def create_alert():
 
 
 @alert_blueprint.route('/deactivate/<string:alert_id>')
+@user_decorators.requires_login
 def deactivate_alert(alert_id):
     pass
 
 
 @alert_blueprint.route('/<string:alert_id>')
+@user_decorators.requires_login
 def get_alert_page(alert_id):
     return alert_id
