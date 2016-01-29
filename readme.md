@@ -17,6 +17,15 @@ It allows users to register, log in, and create and modify their alerts.
 
 Technology stack: MongoDB, Python (Flask & Jinja2), HTML/CSS/Bootstrap, Mailgun.
 
+## Installation
+
+1. Clone the repository (going to a terminal and run `git clone git@github.com:schoolofcode-me/price-of-chair.git`.
+2. Define your administrator e-mail in `src/config.py`.
+3. Define your Mailgun API details on `src/models/alerts/constants.py`.
+4. Create a virtual environment for the repository (run `virtualenv --python=python3.5 venv`)
+5. Run the Flask server by executing `venv/bin/python price-of-chair/src/run.py`.
+6. Whenever you want to check prices of items (**caution: can take a long time if you have a lot of items!**), run `venv/bin/python price-of-char/src/alert_updater.py`.
+
 ![Home Screen](readme-files/home.png)
 
 ![Sign up Screen](readme-files/signup.png)
